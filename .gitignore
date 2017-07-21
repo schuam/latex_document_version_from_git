@@ -2,4 +2,4 @@
 !.gitignore
 !src/
 !src/*.tex
-
+src/git_version.tex
