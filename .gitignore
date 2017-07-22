@@ -1,5 +1,2 @@
-*
-!.gitignore
-!src/
-!src/*.tex
-src/git_version.tex
+pdf/
+src/document_version_from_git.tex
