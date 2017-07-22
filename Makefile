@@ -1,11 +1,12 @@
 default: pdf clean
 
 VERSION=$(shell git describe --tags --dirty)
+TIMESTAMP=$(shell date +%F_%H-%M-%S)
 
 
 pdf: version
 	mkdir -p pdf
-	cd src && pdflatex --output-directory=../pdf --jobname=version_test main.tex
+	cd src && pdflatex --output-directory=../pdf --jobname=version_test_$(TIMESTAMP) main.tex
 
 
 version:
