@@ -1,6 +1,6 @@
 default: pdf clean
 
-VERSION=$(shell git describe --tags --dirty)
+VERSION=$(shell git describe --tags --dirty --always)
 TIMESTAMP=$(shell date +%F_%H-%M-%S)
 
 
