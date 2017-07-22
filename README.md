@@ -46,7 +46,7 @@ printed out.
 
 I re-direct the output of git describe into a new tex file:
 
-    git describe ---tags --dirty --always > document_version_from_git.tex
+    git describe --tags --dirty --always > document_version_from_git.tex
 
 I make sure git ignores this file by adding it into .gitignore. Otherwise,
 after each commit the last command would change the content of that file, which
