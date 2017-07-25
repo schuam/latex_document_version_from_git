@@ -17,17 +17,17 @@ But this is tedious and error prone. I use git as a version control system, so
 it seemed locigal to get the version information from there and somehow inject
 it into the latex document. I looked around the internet, but couldn't find a
 solution that pleased me. Maybe I didn't look long enough, but oh well... I
-came up with my one solution and maybe you're interessted in it.
+came up with my own solution and maybe you're interessted in it.
 
 
 ## Solution
 
-My solution involves the git describe command and make to automate the build
-process. I work on a Linux machine, so I don't know how easy it would be to
-port this to Windows or Mac or what ever OS you might use.
+My solution involves the 'git describe' command and 'make' to automate the
+build process. I work on a Linux machine, so I don't know how easy it would be
+to port this to Windows or Mac or what ever OS you might use.
 
-First of all, when ever a new version of a document is done, I tag it, e.g. like
-this:
+First of all, when ever a new version of a document is done, I tag it, e.g.
+like this:
 
     git tag v1.0
 
@@ -35,14 +35,14 @@ Then the command
 
     git describe --tags --dirty --always
 
-can be used to retrieve usefull information that can be used as the version of a document. In addition
-the the last tag, additional information is given. In case the commit that is
-checked out is ahead of the one with the last tag, git describe displays the
-number of commits the current one is ahead of the one with the tag and the
-commit hash. The '--dirty' option adds '-dirty' to the output of the command,
-in case the working directory is not clean. And '--always' makes sure that in
-case there are no tags in the repo yet, that at least the commit hash is
-printed out.
+can be used to retrieve usefull information that can be used as the version of
+a document. Besides the last tag, additional information is given. In case the
+commit that is checked out is ahead of the one with the last tag, git describe
+displays the number of commits the current one is ahead of the one with the tag
+and the checked out commit hash. The '--dirty' option adds '-dirty' to the
+output of the command, in case the working directory is not clean. And
+'--always' makes sure that in case there are no tags in the repo yet, that at
+least the commit hash is printed out.
 
 I re-direct the output of git describe into a new tex file:
 
@@ -62,10 +62,10 @@ When
 
     \maketitle
 
-is called at the beginning of the actual document, the output of git describe
-is added as a line on the titlepage.
+is called within the main tex file, the output of git describe is added as a
+line on the titlepage.
 
-To automate the process, I wrote a Makefile that whenever I call make, it
+To automate the process, I wrote a Makefile that whenever I call 'make', it
 invokes the git describe command and pdflatex afterwards. In addition it does
 some extra work like cleaning up and add a timestamp the the output file name.
 Check it out if you like.
